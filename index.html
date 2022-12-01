@@ -61,12 +61,17 @@
 			top:20;
 		}
 		.josnData{
-			font-style: italic;
 			border: 1px solid black;
-			font-size: 11;
+			font-size: 10;
 			word-wrap: break-word;
 			justify-content: space-evenly;
 			background: #f7f5f5;
+			word-break: break-all;
+			white-space: pre-wrap;       /* Since CSS 2.1 */
+		    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+		    white-space: -pre-wrap;      /* Opera 4-6 */
+		    white-space: -o-pre-wrap;    /* Opera 7 */
+		    word-wrap: break-word;       /* Internet Explorer 5.5+ */
 		}
 		path:hover {
 		  stroke-width:5px;
@@ -112,15 +117,14 @@
 	            printGraph();
 	            
 	            $( ".draggable" ).draggable({
-	                obstacle:".butNotHere",
 	                preventCollision: true,
 	                containment: "#mainContainer",
 	                start: function(event, ui) {
-	                    $(this).removeClass('butNotHere');
+	                    //$(this).removeClass('butNotHere');
 	                },drag: function() {
 	                	updateConnectors($(this).attr("id"));
 	                },stop: function(event, ui) {
-	                    $(this).addClass('butNotHere');
+	                    //$(this).addClass('butNotHere');
 	                    updateConnectors($(this).attr("id"));
 	                }
 	            });
@@ -239,8 +243,8 @@
 	    	let topPos = (currentPosition.top * 40) + 50;
 	    	
 	    	nextPosition();
-	    	let tooltipText = '<b style="color:red">'+(a_object.nodeId + '# ('+a_object.componentType+')</b></br>' + a_object.name)+'<br/><p class="josnData">' + JSON.stringify(a_object)  + '</p>';
-	    	let returnString = "<div class='"+nodeType+" butNotHere draggable' title='"+tooltipText+"' id='node_" + a_object.nodeId 
+	    	let tooltipText = '<b style="color:red">'+(a_object.nodeId + '# ('+a_object.componentType+')</b></br>' + a_object.name)+'<br/><pre class="josnData">' + JSON.stringify(a_object, undefined, 2)  + '</pre>';
+	    	let returnString = "<div class='"+nodeType+" draggable' title='"+tooltipText+"' id='node_" + a_object.nodeId 
 	    	+ "' style='left:"+leftPos +"; top: "+topPos+"'><div class='contentblock'>";
 	    	
 	    	if(a_object.componentType === "router"){
