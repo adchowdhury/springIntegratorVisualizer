@@ -101,6 +101,7 @@
 				$("#sURL").focus();
 				return;
 			}
+			$("#btnLoad").prop('disabled', true);
 			$.getJSON($("#sURL").val(), function(data){
 				$("#lineContainer").empty();
 				$("#mainContainer div").remove();
@@ -125,10 +126,13 @@
 	            });
 	            
 	            drawConnectors();
+
+	            $("#btnLoad").prop('disabled', false);
 	        }).fail(function(excp){
 	            console.log("An error has occurred.");
 	            console.log(excp);
 	            alert("An error has occurred.");
+	            $("#btnLoad").prop('disabled', false);
 	        });
 		}
 		
@@ -143,11 +147,14 @@
 	        $("#intervalFrequency").prop('selectedIndex', 0);
 	    });//document ready
 	    
+	    //this will hold the quadrant of current node, so next can be plotted easily
 	    let currentPosition = {left: 0, top: 0};
 	    
+	    //move the position to next quadrant
 	    function nextPosition(){
 	    	currentPosition.left++;
 	    	currentPosition.top++;
+	    	
 	    	if(currentPosition.left > 5){
 	    		currentPosition.left = 1;
 	    	}
@@ -425,7 +432,7 @@
 	</head>
 	<body>
 		<div style="background: #dce6df; height: 50; padding-top: 20;">
-			Server URL: <input size="100" type="text" id="sURL" name="sURL" value="https://apps.trigyn.com/hrsSIT/view/springJSONData"/> <button onclick="loadData()">Load Data</button>
+			Server URL: <input size="100" type="text" id="sURL" name="sURL" title="URL of Integration REST API" placeholder="URL of Integration REST API"/> <button id="btnLoad" onclick="loadData()">Load Data</button>
 			Reload interval : 
 			<select id="intervalFrequency" name="intervalFrequency" onchange="reloadInterval()">
 				<option value="-1" selected="selected">None</option>
