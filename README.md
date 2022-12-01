@@ -1,4 +1,4 @@
-# Spring Integration Flow Visualizer
+# [Spring Integration](https://spring.io/projects/spring-integration) Flow Visualizer
 
 **Currently supported nodes are**
 
