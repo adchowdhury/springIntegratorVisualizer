@@ -1,1 +1,1 @@
-# springIntegratorVisualizer
+# Spring Integration Flow Visualizer
