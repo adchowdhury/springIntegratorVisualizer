@@ -84,10 +84,14 @@ path{
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.25);
 }
 .contentblock{
-          overflow: hidden;
-          max-height: 60px;
-      }
-      .successCount{
-      	background-color: #a1eda8;
-      	float: left;
-      }
+    overflow: hidden;
+    max-height: 60px;
+}
+.successCount{
+	background-color: #a1eda8;
+	float: left;
+}
+#chart {
+  max-width: 1050px;
+  margin: 35px auto;
+}
