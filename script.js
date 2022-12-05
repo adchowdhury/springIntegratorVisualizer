@@ -157,21 +157,33 @@
 	    nextPosition();
 	    let tooltipText = '<b style="color:red">' + (a_object.nodeId + '# (' + a_object.componentType + ')</b></br>' + a_object.name) + '<br/><pre class="josnData">' + JSON.stringify(a_object, undefined, 2) + '</pre>';
 	    let returnString = "<div class='" + nodeType + " draggable' title='" + tooltipText + "' id='node_" + a_object.nodeId +
-	        "' style='left:" + leftPos + "; top: " + topPos + "'><div class='contentblock'>";
+	        "' style='left:" + leftPos + "; top: " + topPos + "'><div class='contentblock'><div class='leftblock'>";
 
 	    if (a_object.componentType === "router") {
-	        returnString += "<div class='leftblock'><img src='router.png' class='contnet-img' width='30px'/><span class='greencls'>Green</span><span class='redcls'>Red</span></div>";
+	        returnString += "<img src='router.png' class='contnet-img' width='30px'/>";
 	    } else if (a_object.componentType === "service-activator") {
-	        returnString += "<div class='leftblock'><img src='router.png' class='contnet-img' width='30px'/><span class='greencls'>Green</span><span class='redcls'>Red</span></div>";
+	        returnString += "<img src='router.png' class='contnet-img' width='30px'/>";
 	    } else if (a_object.componentType === "gateway" || a_object.componentType === "ws:inbound-gateway") {
-	        returnString += "<div class='leftblock'><img src='router.png' class='contnet-img' width='30px'/><span class='greencls'>Green</span><span class='redcls'>Red</span></div>";
+	        returnString += "<img src='router.png' class='contnet-img' width='30px'/>";
 	    } else if (a_object.componentType === "chain") {
-	        returnString += "<div class='leftblock'><img src='router.png' class='contnet-img' width='30px'/><span class='greencls'>Green</span><span class='redcls'>Red</span> </div>";
+	        returnString += "<img src='router.png' class='contnet-img' width='30px'/>";
 	    } else if (a_object.componentType === "channel") {
-	        returnString += "<div class='leftblock'><img src='router.png' class='contnet-img' width='30px'/><span class='greencls'>Green</span><span class='redcls'>Red</span> </div>";
+	        returnString += "<img src='router.png' class='contnet-img' width='30px'/>";
 	    }
-	    //returnString += "<span class='successCount'>" + a_object.name + "</span>";
-	    //returnString += "<span class='errorCount'>" + a_object.name + "</span>";
+	    returnString += "<span class='greencls'>";
+	    if(typeof a_object.sendTimers != "undefined") {
+	    	returnString += a_object.sendTimers.successes.count;
+	    }else{
+	    	returnString += "N/A";
+	    }
+	    returnString += "</span>";
+	    returnString += "<span class='redcls'>";
+	    if(typeof a_object.sendTimers != "undefined") {
+	    	returnString += a_object.sendTimers.failures.count;
+	    }else{
+	    	returnString += "N/A";
+	    }
+	    returnString += "</span></div>";
 	    returnString += "<span class='desc'>" + a_object.name + "</span></div>";
 	    returnString += "<span class='output'>&#9654;</span>";
 	    returnString += "<span class='input'>&#9654;</span>";
