@@ -162,13 +162,13 @@
 	    if (a_object.componentType === "router") {
 	        returnString += "<img src='router.png' class='contnet-img' width='30px'/>";
 	    } else if (a_object.componentType === "service-activator") {
-	        returnString += "<img src='router.png' class='contnet-img' width='30px'/>";
+	        returnString += "<img src='serviceActivator.jpg' class='contnet-img' width='30px'/>";
 	    } else if (a_object.componentType === "gateway" || a_object.componentType === "ws:inbound-gateway") {
-	        returnString += "<img src='router.png' class='contnet-img' width='30px'/>";
+	        returnString += "<img src='gateway.jpg' class='contnet-img' width='30px'/>";
 	    } else if (a_object.componentType === "chain") {
-	        returnString += "<img src='router.png' class='contnet-img' width='30px'/>";
+	        returnString += "<img src='chain.png' class='contnet-img' width='30px'/>";
 	    } else if (a_object.componentType === "channel") {
-	        returnString += "<img src='router.png' class='contnet-img' width='30px'/>";
+	        returnString += "<img src='channel.png' class='contnet-img' width='30px'/>";
 	    }
 	    returnString += "<span class='greencls'>";
 	    if(typeof a_object.sendTimers != "undefined") {
