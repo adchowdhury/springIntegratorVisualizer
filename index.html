@@ -44,7 +44,9 @@
 	</head>
 	<body>
 		<div style="background: #dce6df; height: 50; padding-top: 20;">
-			Server URL: <input size="100" type="text" id="sURL" name="sURL" title="URL of Integration REST API" placeholder="URL of Integration REST API"/> <button id="btnLoad" onclick="loadData()">Load Data</button>
+			Server URL: <input size="100" type="text" id="sURL" name="sURL" title="URL of Integration REST API"
+							   value="http://localhost:10095/integration"
+							   placeholder="URL of Integration REST API" onkeypress="loadDataOnKeyPress(event)"/> <button id="btnLoad" onclick="loadData()">Load Data</button>
 			Reload interval : 
 			<select id="intervalFrequency" name="intervalFrequency" onchange="reloadInterval()">
 				<option value="-1" selected="selected">None</option>
@@ -54,8 +56,8 @@
 		</div>
 		<div id="tabs">
 		  <ul>
-		    <li><a href="#tabs-1">Node Graph</a></li>
-		    <li><a href="#tabs-2">Top 10</a></li>
+		    <li><a href="#tabs-1">Integration Flow</a></li>
+		    <li><a href="#tabs-2">Runtime Analysis</a></li>
 		  </ul>
 		  <div id="tabs-1">
 			<div id="mainContainer" class="ui-widget ui-widget-content bgimgcls">
